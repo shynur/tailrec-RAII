@@ -8,10 +8,10 @@ test: test-good.exe test-bad.exe
 	./test-good.exe; echo exited\($$?\)
 	@echo ============================ End =============================
 
-test-good.exe: main.c good.hpp
+test-good.exe: main.cpp good.hpp
 	$(CXX) $(CXXFLAGS) -D'TAILREC' $< -o $@
 
-test-bad.exe: main.c bad.hpp
+test-bad.exe: main.cpp bad.hpp
 	$(CXX) $(CXXFLAGS)             $< -o $@
 
 .PHONY: clean
