@@ -5,5 +5,5 @@ inline void bad(const unsigned n) {
         return;
     auto tmp_var = std::string{};
     tmp_var.push_back('*');  // do something...
-    bad(n-1);
+    return bad(n-1);
 }

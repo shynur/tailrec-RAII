@@ -9,7 +9,12 @@ struct Good {
         tmp_var_chain = new std::pair<std::string, void *>{{}, tmp_var_chain};
         auto& tmp_var = tmp_var_chain->first;
         tmp_var.push_back('*');  // do something...
-        (*this)(n-1);
+#ifdef __clang__
+	[[clang::musttail]]
+#elifdef __GNUG__
+          [[gnu::musttail]]
+#endif
+	return (*this)(n-1);
     }
     ~Good() {
         while (tmp_var_chain) {
